@@ -1,3 +1,4 @@
+# .gitignore - Prevent committing sensitive files and virtual environment
 # Ignore outputs
 outputs/reports/*
 __pycache__/
@@ -6,3 +7,9 @@ __pycache__/
 *.pyd
 .env
 *.env
+
+# Environment variables
+.env
+
+# Virtual environment
+recon/

@@ -1,0 +1,12 @@
+typer[all]
+rich
+python-dotenv
+openai
+
+[:platform_system != "Windows"]
+python-nmap
+
+[dev]
+pytest
+mypy
+ruff

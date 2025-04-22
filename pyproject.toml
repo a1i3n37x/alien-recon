@@ -1,0 +1,40 @@
+# pyproject.toml  ── alienrecon 0.1.0
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name            = "alienrecon"
+version         = "0.1.0"
+description     = "AI‑assisted recon helper for CTFs"
+authors         = [{ name = "Russell J. Adams" }]
+requires-python = ">=3.10"
+
+dependencies = [
+    "typer[all]",
+    "rich",
+    "python-dotenv",
+    "python-nmap ; platform_system != 'Windows'",
+    "openai",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "mypy", "ruff"]
+
+# Typer autogenerates the console script `alienrecon`
+[tool.typer]
+entrypoint = "alienrecon.cli:app"
+
+# ──────────  Setuptools config  ──────────
+# Tell setuptools to look ONLY in src/
+[tool.setuptools.package-dir]
+"" = "src"
+
+# Limit discovery to the alienrecon package (and sub‑packages)
+[tool.setuptools.packages.find]
+where   = ["src"]
+include = ["alienrecon*"]
+
+[project.scripts]
+alienrecon = "alienrecon.cli:app"
+
